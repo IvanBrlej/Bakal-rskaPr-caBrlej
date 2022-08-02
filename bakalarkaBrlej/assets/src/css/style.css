@@ -1,0 +1,112 @@
+.card{
+    background-image: linear-gradient(315deg, #000000 0%, #434343 74%);
+    border-color: black;
+}
+
+.button_send {
+    background: grey;
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 900;
+    font-size: 13px;
+    border: 3px solid black;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button_send:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em;
+}
+
+.button_send:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+}
+
+h3{
+    font-family: 'Red Hat Mono', monospace;
+    font-size: 42px;
+    text-align: center;
+}
+
+table, th, td {
+    border: 3px solid;
+}
+
+.login_btn{
+    margin-top: 15px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background: grey;
+    border: 2px solid black;
+    box-shadow: 5px 5px 0 black,
+    -5px -5px 0 black,
+    -5px 5px 0 black,
+    5px -5px 0 black;
+    transition: 500ms ease-in-out;
+}
+
+.login_btn:hover {
+    box-shadow: 20px 5px 0 black, -20px -5px 0 black;
+    color: black;
+    background-color: white;
+}
+
+.sendTest{
+    font-family: inherit;
+    font-weight: bold;
+    margin: 30px 0;
+    width: 120px;
+    height: 50px;
+    background-color: grey;
+    color: black;
+    font-size: 18px;
+    border-radius: 6px;
+    border: 3px solid black;
+    outline: none;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+.sendTest:hover{
+    transform: rotateX(15deg);
+    box-shadow: 0 15px 15px grey;
+}
+
+.question{
+    font-family: -apple-system;
+    font-size: 18px;
+    background-color: #E3E2DF;
+    color: #3AAFA9;
+    border-radius: 6px;
+    border: 1px solid grey;
+}
+
+label {
+    padding: 2px;
+    margin: 2px;
+}
+
+input[type="checkbox"]:checked + label {
+    color: #ffffff;
+    font-weight: bold;
+    background: #3AAFA9;
+    font-style: italic;
+}
+
+input[type="radio"]:checked + label {
+    color: #ffffff;
+    font-weight: bold;
+    background: #3AAFA9;
+    font-style: italic;
+}
+
+
+

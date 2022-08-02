@@ -1,0 +1,165 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Hostiteľ: 127.0.0.1
+-- Čas generovania: Út 02.Aug 2022, 09:46
+-- Verzia serveru: 10.4.22-MariaDB
+-- Verzia PHP: 8.1.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Databáza: `bakalarkabrlej`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `answers`
+--
+
+CREATE TABLE `answers` (
+  `id` int(11) NOT NULL,
+  `answers` text DEFAULT NULL,
+  `time_of_submission` datetime DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `questionjson`
+--
+
+CREATE TABLE `questionjson` (
+  `questionId` int(11) NOT NULL,
+  `questionType` varchar(100) DEFAULT NULL,
+  `questions` text NOT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `id` int(11) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `username` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `registration_time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Kľúče pre exportované tabuľky
+--
+
+--
+-- Indexy pre tabuľku `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `indexx` (`subject`);
+
+--
+-- Indexy pre tabuľku `questionjson`
+--
+ALTER TABLE `questionjson`
+  ADD PRIMARY KEY (`questionId`),
+  ADD KEY `questionjson_subject_index` (`subject`);
+
+--
+-- Indexy pre tabuľku `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `indexx` (`username`),
+  ADD KEY `indexxx` (`subject`);
+
+--
+-- Indexy pre tabuľku `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `indexx` (`username`);
+
+--
+-- AUTO_INCREMENT pre exportované tabuľky
+--
+
+--
+-- AUTO_INCREMENT pre tabuľku `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pre tabuľku `questionjson`
+--
+ALTER TABLE `questionjson`
+  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pre tabuľku `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pre tabuľku `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Obmedzenie pre exportované tabuľky
+--
+
+--
+-- Obmedzenie pre tabuľku `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `record_subjects_subject_fk` FOREIGN KEY (`subject`) REFERENCES `subjects` (`subject`);
+
+--
+-- Obmedzenie pre tabuľku `questionjson`
+--
+ALTER TABLE `questionjson`
+  ADD CONSTRAINT `questionjson_subjects_subject_fk` FOREIGN KEY (`subject`) REFERENCES `subjects` (`subject`);
+
+--
+-- Obmedzenie pre tabuľku `subjects`
+--
+ALTER TABLE `subjects`
+  ADD CONSTRAINT `subjects_users_username_fk` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

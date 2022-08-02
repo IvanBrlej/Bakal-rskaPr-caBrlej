@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+a{
+    margin: 0 5px;
+    list-style: none;
+    line-height: 50px;
+    border-radius: 12px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.navbar {
+    text-align: left;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: cadetblue;
+}
+
+.navbar li:hover {
+    background-color: darkblue;
+    border-radius: 20px;
+    border-left: 5px solid darkblue;
+}
+
+.navbar-brand{
+    color: darkblue;
+}
+
+span:hover{
+    color: white;
+}
+
+i:hover{
+    color: white;
+}
+
+
+
+
